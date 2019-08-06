@@ -1,3 +1,6 @@
+# Billboard-React
+A react project to show data grabbed from the billboard grabber project. An alternative front end to the billboard-viewer project
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
