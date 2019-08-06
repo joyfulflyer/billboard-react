@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import axios from 'axios';
+import ChartEntry from './ChartEntry';
 
 
 class Song extends Component {
@@ -11,7 +9,7 @@ class Song extends Component {
         super(props);
         this.state = {
             open: [],
-            entries: props.songs
+            entries: props.charts
         };
     }
 
@@ -21,17 +19,18 @@ class Song extends Component {
 
     render() {
         return (
-            <List
-                component="nav"
-                subheader={<ListSubheader component="div">Songs</ListSubheader>}
-            >
-                {this.state.entries.map(song => (
-                    <ListItem chart>
-                        <ListItemText inset primary={song} />
-                    </ListItem>
-                ))}
+            <>
+                <h1> {this.props.name} </h1>
+                <List
+                    component="nav"
+                    subheader={<ListSubheader component="div">Songs</ListSubheader>}
+                >
+                    {this.state.entries.map(chart => (
+                        <ChartEntry date={chart.date} name={chart.name} />
+                    ))}
 
-            </List>
+                </List>
+            </>
         );
     }
 }
