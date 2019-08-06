@@ -24,9 +24,11 @@ class ChartEntry extends React.Component {
     }
 
     render() {
-        const standardItems = (<ListItemText inset="true">
-            {this.props.date} {this.props.name}
-        </ListItemText>)
+        const standardItems = (
+            <ListItemText inset="true">
+                {this.props.date} {this.props.name}
+            </ListItemText>
+            )
         if (!this.state.open) {
             return (
                 <ListItem button onClick={this.handleClick}>

@@ -19,7 +19,7 @@ class Song extends Component {
 
     render() {
         return (
-            <>
+            <div>
                 <h1> {this.props.name} </h1>
                 <List
                     component="nav"
@@ -30,7 +30,7 @@ class Song extends Component {
                     ))}
 
                 </List>
-            </>
+            </div>
         );
     }
 }
