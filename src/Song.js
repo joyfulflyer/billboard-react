@@ -7,34 +7,31 @@ import axios from 'axios';
 
 
 class Song extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             open: [],
-            entries: []
+            entries: props.songs
         };
     }
 
     componentDidMount() {
-        axios.get()
 
     }
 
     render() {
         return (
-            <List 
+            <List
                 component="nav"
-                classname={this.props.root}
                 subheader={<ListSubheader component="div">Songs</ListSubheader>}
-            >                
-            {this.state.entries.map(song => (
+            >
+                {this.state.entries.map(song => (
                     <ListItem chart>
-                        <ListItemText inset primary={song}/>
+                        <ListItemText inset primary={song} />
                     </ListItem>
                 ))}
 
             </List>
-
         );
     }
 }
