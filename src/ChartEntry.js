@@ -28,7 +28,7 @@ class ChartEntry extends React.Component {
             <ListItemText inset="true">
                 {this.props.date} {this.props.name}
             </ListItemText>
-            )
+        )
         if (!this.state.open) {
             return (
                 <ListItem button onClick={this.handleClick}>
@@ -37,14 +37,16 @@ class ChartEntry extends React.Component {
             )
         } else {
             return (
-                <ListItem button onClick={this.handleClick}>
-                    {standardItems}
+                <div>
+                    <ListItem button onClick={this.handleClick}>
+                        {standardItems}
+                    </ListItem>
                     <List>
                         {this.state.songs.map(song => (
                             <ChartEntrySong rank={song.rank} name={song.name} artist={song.artist} />
                         ))}
                     </List>
-                </ListItem>
+                </div>
             )
         }
     }
