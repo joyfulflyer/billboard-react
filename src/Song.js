@@ -44,7 +44,7 @@ class Song extends Component {
                     subheader={<ListSubheader component="div">Songs</ListSubheader>}
                 >
                     {this.state.entries.map(chart => (
-                        <ChartEntry date={chart.date} name={chart.chartName} key={chart.id} />
+                        <ChartEntry date={chart.date} name={chart.chartName} key={chart.chartId} id={chart.chartId} />
                     ))}
 
                 </List>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { List, ListItem, ListItemText } from '@material-ui/core';
 import ChartEntrySong from './ChartEntrySong';
+import { get } from 'axios'
 
 class ChartEntry extends React.Component {
     constructor(props) {
@@ -15,15 +16,21 @@ class ChartEntry extends React.Component {
     handleClick() {
         this.setState({
             open: !this.state.open,
-            songs: [
-                { rank: 1, name: "hooey", artist: "prince" },
-                { rank: 2, name: "sdf", artist: "pri565nce" },
-                { rank: 3, name: "vvv", artist: "btt785" },
-            ]
         })
     }
 
     componentDidMount() {
+        console.log(`id`, this.props.id)
+        get(`/api/chart/${this.props.id}`)
+        .then(({ data }) => {
+            console.log(data)
+            this.setState({
+                songs: data
+            })
+        })
+        .catch(err => {
+            console.log(err)
+        })
 
     }
 
@@ -47,7 +54,7 @@ class ChartEntry extends React.Component {
                     </ListItem>
                     <List>
                         {this.state.songs.map(song => (
-                            <ChartEntrySong rank={song.rank} name={song.name} artist={song.artist} />
+                            <ChartEntrySong rank={song.place} name={song.name} artist={song.artist} />
                         ))}
                     </List>
                 </div>

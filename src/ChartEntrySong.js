@@ -7,7 +7,7 @@ class ChartEntrySong extends React.Component {
     render() {
         return (
             <ListItemText>
-                {this.props.rank} {this.props.name} {this.props.artist}
+                {`#${this.props.rank} '${this.props.name}' by ${this.props.artist}`}
             </ListItemText>
         )
     }
