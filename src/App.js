@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header header={'Header'}/>
-        <Song charts={[{name:'moo', date:'1-2-3'}, 'moo2']} />
+        <Song id={`43913`}/>
       </div>
     );
   }
