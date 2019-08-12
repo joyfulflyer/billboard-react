@@ -1,16 +1,14 @@
-import React from 'react'
-import { ListItemText } from '@material-ui/core';
+import React from "react";
+import { ListItemText } from "@material-ui/core";
 
 class ChartEntrySong extends React.Component {
-
-
-    render() {
-        return (
-            <ListItemText>
-                {`#${this.props.rank} '${this.props.name}' by ${this.props.artist}`}
-            </ListItemText>
-        )
-    }
+  render() {
+    return (
+      <ListItemText>
+        {`#${this.props.rank} '${this.props.name}' by ${this.props.artist}`}
+      </ListItemText>
+    );
+  }
 }
 
-export default ChartEntrySong
+export default ChartEntrySong;
