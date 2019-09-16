@@ -47,6 +47,7 @@ class Song extends Component {
               name={chart.chartName}
               key={chart.chartId}
               id={chart.chartId}
+              place={chart.place}
             />
           ))}
         </List>

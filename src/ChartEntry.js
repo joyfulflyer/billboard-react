@@ -36,7 +36,7 @@ class ChartEntry extends React.Component {
   render() {
     const standardItems = (
       <ListItemText inset={true}>
-        {`${this.props.date} ${this.props.name}`}
+        {`on ${this.props.date}, ${this.props.name} was at ${this.props.place}`}
       </ListItemText>
     );
     if (!this.state.open) {
