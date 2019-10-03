@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^3.9.3",
     "@reach/router": "^1.2.1",
     "axios": "^0.18.1",
     "prop-types": "^15.7.2",

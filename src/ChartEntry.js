@@ -1,5 +1,4 @@
 import React from "react";
-import { List, ListItem, ListItemText } from "@material-ui/core";
 import ChartEntrySong from "./ChartEntrySong";
 import { get } from "axios";
 
@@ -35,31 +34,30 @@ class ChartEntry extends React.Component {
 
   render() {
     const standardItems = (
-      <ListItemText inset={true}>
+      <li inset={true}>
         {`on ${this.props.date}, ${this.props.name} was at ${this.props.place}`}
-      </ListItemText>
+      </li>
     );
     if (!this.state.open) {
       return (
-        <ListItem button onClick={this.handleClick}>
+        <li button onClick={this.handleClick}>
           {standardItems}
-        </ListItem>
+        </li>
       );
     } else {
       return (
         <div>
-          <ListItem button onClick={this.handleClick}>
+          <li button onClick={this.handleClick}>
             {standardItems}
-          </ListItem>
-          <List>
+          </li>
+          <ul>
             {this.state.songs.map(song => (
               <ChartEntrySong
                 rank={song.place}
-                name={song.name}
-                artist={song.artist}
+                {...song}
               />
             ))}
-          </List>
+          </ul>
         </div>
       );
     }

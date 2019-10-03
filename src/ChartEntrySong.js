@@ -1,12 +1,12 @@
 import React from "react";
-import { ListItemText } from "@material-ui/core";
 
 class ChartEntrySong extends React.Component {
   render() {
     return (
-      <ListItemText>
+      <li><a href={this.props.songId}>
         {`#${this.props.rank} '${this.props.name}' by ${this.props.artist}`}
-      </ListItemText>
+        </a>
+      </li>
     );
   }
 }

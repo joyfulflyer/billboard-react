@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import ListSubheader from "@material-ui/core/ListSubheader";
-import List from "@material-ui/core/List";
 import ChartEntry from "./ChartEntry";
 import { get } from "axios";
 
@@ -10,14 +8,14 @@ class Song extends Component {
     this.state = {
       open: [],
       entries: [],
-      name: ``,
-      artist: ``
+      name: `Song Name`,
+      artist: `Artist`
     };
   }
 
   componentDidMount() {
-    const { id } = this.props;
-    get(`/api/song/${id}`)
+    const { songId } = this.props;
+    get(`/api/song/${songId}`)
       .then(({ data }) => {
         this.setState({
           name: data.name,
@@ -37,10 +35,8 @@ class Song extends Component {
       <div>
         <h1> {this.state.name} </h1>
         <h2> {this.state.artist} </h2>
-        <List
-          component="nav"
-          subheader={<ListSubheader component="div">Songs</ListSubheader>}
-        >
+        <ul class="nav">
+          <div class="subheader">Songs</div>
           {this.state.entries.map(chart => (
             <ChartEntry
               date={chart.date}
@@ -50,7 +46,8 @@ class Song extends Component {
               place={chart.place}
             />
           ))}
-        </List>
+
+        </ul>
       </div>
     );
   }
