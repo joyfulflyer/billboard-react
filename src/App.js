@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header header={'Header'}/>
-        <Song id={`43913`}/>
+        {this.props.children}
       </div>
     );
   }
