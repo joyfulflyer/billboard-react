@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import ChartEntry from "./ChartEntry";
 import { get } from "axios";
-import styles from './Song.module.scss';
+import SongList from "./SongList";
 
 class Song extends Component {
   constructor(props) {
@@ -36,19 +35,7 @@ class Song extends Component {
       <div>
         <h1> {this.state.name} </h1>
         <h2> {this.state.artist} </h2>
-        <div className={styles.songList}>
-          <div className={styles.subheader}>Songs</div>
-          {this.state.entries.map(chart => (
-            <ChartEntry
-              date={chart.date}
-              name={chart.chartName}
-              key={chart.chartId}
-              id={chart.chartId}
-              place={chart.place}
-            />
-          ))}
-
-        </div>
+        <SongList entries={this.state.entries}/>
       </div>
     );
   }
