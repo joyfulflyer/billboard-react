@@ -1,12 +1,12 @@
-//@import 'util/util';
+@import './rem-calc';
 
-// .subheader {
-//     text-decoration: underline;
-//     text-align: center;
-// }
+.songList {
+  display: block;
+  text-align: start;
+  margin: rem-calc(5);
 
-// .songList {
-//     display: block;
-//     text-align: start;
-//     margin: rem-calc(5px);
-// }
+  .subheader {
+    text-decoration: underline;
+    text-align: center;
+  }
+}
