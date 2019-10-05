@@ -33,20 +33,25 @@ class ChartEntry extends React.Component {
         });
   }
 
+  getSongContainer(open, songs) {
+    if (open) {
+      return (
+        <div className={styles.songContainer}>
+          {songs &&
+            songs.map(song => <ChartEntrySong rank={song.place} {...song} />)}
+        </div>
+      );
+    }
+    return null;
+  }
+
   render() {
-    const standardItems = (
-      <div>
-        {`Was at #${this.props.place} on ${this.props.date} on the ${this.props.name} chart`}
-      </div>
-    );
     return (
       <div className={styles.chartEntry}>
-        <div onClick={this.handleClick}>{standardItems}</div>
-        {this.state.open &&
-          this.state.songs &&
-          this.state.songs.map(song => (
-            <ChartEntrySong rank={song.place} {...song} />
-          ))}
+        <div className={styles.chartEntryHeader} onClick={this.handleClick}>
+          {`#${this.props.place} on the ${this.props.name} chart on ${this.props.date}`}
+        </div>
+        {this.getSongContainer(this.state.open, this.state.songs)}
       </div>
     );
   }
