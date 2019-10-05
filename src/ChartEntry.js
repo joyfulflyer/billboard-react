@@ -19,16 +19,17 @@ class ChartEntry extends React.Component {
   }
 
   componentDidMount() {
-    this.props.id && get(`/api/chart/${this.props.id}`)
-      .then(({ data }) => {
-        console.log(data);
-        this.setState({
-          songs: data
+    this.props.id &&
+      get(`/api/chart/${this.props.id}`)
+        .then(({ data }) => {
+          console.log(data);
+          this.setState({
+            songs: data
+          });
+        })
+        .catch(err => {
+          console.log(err);
         });
-      })
-      .catch(err => {
-        console.log(err);
-      });
   }
 
   render() {
@@ -38,11 +39,7 @@ class ChartEntry extends React.Component {
       </div>
     );
     if (!this.state.open) {
-      return (
-        <div onClick={this.handleClick}>
-          {standardItems}
-        </div>
-      );
+      return <div onClick={this.handleClick}>{standardItems}</div>;
     } else {
       return (
         <div>
@@ -51,10 +48,7 @@ class ChartEntry extends React.Component {
           </div>
           <div>
             {this.state.songs.map(song => (
-              <ChartEntrySong
-                rank={song.place}
-                {...song}
-              />
+              <ChartEntrySong rank={song.place} {...song} />
             ))}
           </div>
         </div>

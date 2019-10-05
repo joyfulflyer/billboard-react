@@ -35,7 +35,7 @@ class Song extends Component {
       <div>
         <h1> {this.state.name} </h1>
         <h2> {this.state.artist} </h2>
-        <SongList entries={this.state.entries}/>
+        <SongList entries={this.state.entries} />
       </div>
     );
   }
