@@ -34,30 +34,30 @@ class ChartEntry extends React.Component {
 
   render() {
     const standardItems = (
-      <li inset={true}>
+      <div inset={true}>
         {`on ${this.props.date}, ${this.props.name} was at ${this.props.place}`}
-      </li>
+      </div>
     );
     if (!this.state.open) {
       return (
-        <li button onClick={this.handleClick}>
+        <div button onClick={this.handleClick}>
           {standardItems}
-        </li>
+        </div>
       );
     } else {
       return (
         <div>
-          <li button onClick={this.handleClick}>
+          <div button onClick={this.handleClick}>
             {standardItems}
-          </li>
-          <ul>
+          </div>
+          <div>
             {this.state.songs.map(song => (
               <ChartEntrySong
                 rank={song.place}
                 {...song}
               />
             ))}
-          </ul>
+          </div>
         </div>
       );
     }
