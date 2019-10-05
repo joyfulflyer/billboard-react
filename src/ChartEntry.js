@@ -1,6 +1,7 @@
 import React from "react";
 import ChartEntrySong from "./ChartEntrySong";
 import { get } from "axios";
+import styles from "./ChartEntry.module.scss";
 
 class ChartEntry extends React.Component {
   constructor(props) {
@@ -35,25 +36,19 @@ class ChartEntry extends React.Component {
   render() {
     const standardItems = (
       <div>
-        {`on ${this.props.date}, ${this.props.name} was at ${this.props.place}`}
+        {`Was at #${this.props.place} on ${this.props.date} on the ${this.props.name} chart`}
       </div>
     );
-    if (!this.state.open) {
-      return <div onClick={this.handleClick}>{standardItems}</div>;
-    } else {
-      return (
-        <div>
-          <div button onClick={this.handleClick}>
-            {standardItems}
-          </div>
-          <div>
-            {this.state.songs.map(song => (
-              <ChartEntrySong rank={song.place} {...song} />
-            ))}
-          </div>
-        </div>
-      );
-    }
+    return (
+      <div className={styles.chartEntry}>
+        <div onClick={this.handleClick}>{standardItems}</div>
+        {this.state.open &&
+          this.state.songs &&
+          this.state.songs.map(song => (
+            <ChartEntrySong rank={song.place} {...song} />
+          ))}
+      </div>
+    );
   }
 }
 

@@ -22,8 +22,6 @@ class Song extends Component {
           entries: data.charts,
           artist: data.artist
         });
-        console.log(data);
-        console.log(data.name);
       })
       .catch(err => {
         console.log(err);
