@@ -34,13 +34,13 @@ class ChartEntry extends React.Component {
 
   render() {
     const standardItems = (
-      <div inset={true}>
+      <div>
         {`on ${this.props.date}, ${this.props.name} was at ${this.props.place}`}
       </div>
     );
     if (!this.state.open) {
       return (
-        <div button onClick={this.handleClick}>
+        <div onClick={this.handleClick}>
           {standardItems}
         </div>
       );
