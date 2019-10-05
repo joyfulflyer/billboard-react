@@ -19,8 +19,7 @@ class ChartEntry extends React.Component {
   }
 
   componentDidMount() {
-    console.log(`id`, this.props.id);
-    get(`/api/chart/${this.props.id}`)
+    this.props.id && get(`/api/chart/${this.props.id}`)
       .then(({ data }) => {
         console.log(data);
         this.setState({
