@@ -3,13 +3,18 @@
  * @param entries
  */
 export function getDates(entries) {
-  console.log("process entries", entries);
-  return (
-    Array.isArray(entries) &&
-    entries.map(entry => {
-      return new Date(entry.date);
-    })
-  );
+  if (!Array.isArray(entries)) {
+    return false;
+  }
+  const dateStrings = entries.map(entry => {
+    return entry.date;
+  });
+  const setOfdates = [...new Set(dateStrings)];
+  const dates = setOfdates.map(entry => {
+    return new Date(entry);
+  });
+
+  return dates;
 }
 
 /**
@@ -24,6 +29,9 @@ export function getDatasets(entries) {
   // I think this is pretty easy to do in one pass
   // create a map with the chart name as the key
   // the value is the array of data
+  if (!Array.isArray(entries)) {
+    return;
+  }
   const chartNames = entries.map(entry => {
     return entry.chartName;
   });
@@ -34,7 +42,7 @@ export function getDatasets(entries) {
   const objectsFromName = uniqueChartNames.map(chartName => {
     const data = entries
       .filter(filterEntry => {
-        return filterEntry.chartName == chartName;
+        return filterEntry.chartName === chartName;
       })
       .map(mapEntry => {
         return {

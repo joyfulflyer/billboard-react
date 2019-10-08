@@ -34,7 +34,6 @@ export default class LineChart extends Component {
   }
 
   render() {
-    console.log("line render");
     return (
       <div>
         <canvas id="songChart" ref={this.chartRef} />

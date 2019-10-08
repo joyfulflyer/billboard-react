@@ -13,6 +13,85 @@ const entries = [
   { place: 98, chartId: 14, chartName: "hot-100", date: "1958-10-13" }
 ];
 
+const mixedEntries = [
+  { place: 96, chartId: 6, chartName: "hot-100", date: "1958-08-18" },
+  { place: 40, chartId: 7, chartName: "hot-100", date: "1958-08-25" },
+  { place: 22, chartId: 8, chartName: "hot-100", date: "1958-09-01" },
+  { place: 11, chartId: 9, chartName: "hot-100", date: "1958-09-08" },
+  { place: 4, chartId: 10, chartName: "hot-100", date: "1958-09-15" },
+  { place: 3, chartId: 11, chartName: "hot-100", date: "1958-09-22" },
+  { place: 1, chartId: 12, chartName: "hot-100", date: "1958-09-29" },
+  { place: 1, chartId: 13, chartName: "hot-100", date: "1958-10-06" },
+  { place: 1, chartId: 14, chartName: "hot-100", date: "1958-10-13" },
+  { place: 1, chartId: 15, chartName: "hot-100", date: "1958-10-20" },
+  { place: 1, chartId: 16, chartName: "hot-100", date: "1958-10-27" },
+  { place: 1, chartId: 17, chartName: "hot-100", date: "1958-11-03" },
+  { place: 3, chartId: 18, chartName: "hot-100", date: "1958-11-10" },
+  { place: 4, chartId: 19, chartName: "hot-100", date: "1958-11-17" },
+  { place: 5, chartId: 20, chartName: "hot-100", date: "1958-11-24" },
+  { place: 10, chartId: 21, chartName: "hot-100", date: "1958-12-01" },
+  { place: 12, chartId: 22, chartName: "hot-100", date: "1958-12-08" },
+  { place: 25, chartId: 23, chartName: "hot-100", date: "1958-12-15" },
+  { place: 29, chartId: 24, chartName: "hot-100", date: "1958-12-22" },
+  { place: 38, chartId: 25, chartName: "hot-100", date: "1958-12-29" },
+  { place: 43, chartId: 26, chartName: "hot-100", date: "1959-01-05" },
+  { place: 58, chartId: 27, chartName: "hot-100", date: "1959-01-12" },
+  {
+    place: 3,
+    chartId: 3206,
+    chartName: "r-b-hip-hop-songs",
+    date: "1958-10-20"
+  },
+  {
+    place: 2,
+    chartId: 3207,
+    chartName: "r-b-hip-hop-songs",
+    date: "1958-10-27"
+  },
+  {
+    place: 2,
+    chartId: 3209,
+    chartName: "r-b-hip-hop-songs",
+    date: "1958-11-03"
+  },
+  {
+    place: 2,
+    chartId: 3210,
+    chartName: "r-b-hip-hop-songs",
+    date: "1958-11-10"
+  },
+  {
+    place: 2,
+    chartId: 3211,
+    chartName: "r-b-hip-hop-songs",
+    date: "1958-11-17"
+  },
+  {
+    place: 3,
+    chartId: 3212,
+    chartName: "r-b-hip-hop-songs",
+    date: "1958-11-24"
+  },
+  {
+    place: 4,
+    chartId: 3213,
+    chartName: "r-b-hip-hop-songs",
+    date: "1958-12-01"
+  },
+  {
+    place: 7,
+    chartId: 3214,
+    chartName: "r-b-hip-hop-songs",
+    date: "1958-12-08"
+  },
+  {
+    place: 7,
+    chartId: 3215,
+    chartName: "r-b-hip-hop-songs",
+    date: "1958-12-15"
+  }
+];
+
 describe("Line chart utils", () => {
   describe("getDates", () => {
     it("Returns a value", () => {
@@ -39,6 +118,15 @@ describe("Line chart utils", () => {
     it("Does not crash when passed an object", () => {
       getDates({});
     });
+
+    it("Should remove duplicate dates", () => {
+      const dates = getDates(mixedEntries);
+      const compDate = new Date("1958-11-17");
+      const filtered = dates.filter(date => {
+        return date.getTime() == compDate.getTime();
+      });
+      expect(filtered).toHaveLength(1);
+    });
   });
 
   /**
@@ -49,85 +137,6 @@ describe("Line chart utils", () => {
    *  }
    */
   describe("getDatasets", () => {
-    const mixedEntries = [
-      { place: 96, chartId: 6, chartName: "hot-100", date: "1958-08-18" },
-      { place: 40, chartId: 7, chartName: "hot-100", date: "1958-08-25" },
-      { place: 22, chartId: 8, chartName: "hot-100", date: "1958-09-01" },
-      { place: 11, chartId: 9, chartName: "hot-100", date: "1958-09-08" },
-      { place: 4, chartId: 10, chartName: "hot-100", date: "1958-09-15" },
-      { place: 3, chartId: 11, chartName: "hot-100", date: "1958-09-22" },
-      { place: 1, chartId: 12, chartName: "hot-100", date: "1958-09-29" },
-      { place: 1, chartId: 13, chartName: "hot-100", date: "1958-10-06" },
-      { place: 1, chartId: 14, chartName: "hot-100", date: "1958-10-13" },
-      { place: 1, chartId: 15, chartName: "hot-100", date: "1958-10-20" },
-      { place: 1, chartId: 16, chartName: "hot-100", date: "1958-10-27" },
-      { place: 1, chartId: 17, chartName: "hot-100", date: "1958-11-03" },
-      { place: 3, chartId: 18, chartName: "hot-100", date: "1958-11-10" },
-      { place: 4, chartId: 19, chartName: "hot-100", date: "1958-11-17" },
-      { place: 5, chartId: 20, chartName: "hot-100", date: "1958-11-24" },
-      { place: 10, chartId: 21, chartName: "hot-100", date: "1958-12-01" },
-      { place: 12, chartId: 22, chartName: "hot-100", date: "1958-12-08" },
-      { place: 25, chartId: 23, chartName: "hot-100", date: "1958-12-15" },
-      { place: 29, chartId: 24, chartName: "hot-100", date: "1958-12-22" },
-      { place: 38, chartId: 25, chartName: "hot-100", date: "1958-12-29" },
-      { place: 43, chartId: 26, chartName: "hot-100", date: "1959-01-05" },
-      { place: 58, chartId: 27, chartName: "hot-100", date: "1959-01-12" },
-      {
-        place: 3,
-        chartId: 3206,
-        chartName: "r-b-hip-hop-songs",
-        date: "1958-10-20"
-      },
-      {
-        place: 2,
-        chartId: 3207,
-        chartName: "r-b-hip-hop-songs",
-        date: "1958-10-27"
-      },
-      {
-        place: 2,
-        chartId: 3209,
-        chartName: "r-b-hip-hop-songs",
-        date: "1958-11-03"
-      },
-      {
-        place: 2,
-        chartId: 3210,
-        chartName: "r-b-hip-hop-songs",
-        date: "1958-11-10"
-      },
-      {
-        place: 2,
-        chartId: 3211,
-        chartName: "r-b-hip-hop-songs",
-        date: "1958-11-17"
-      },
-      {
-        place: 3,
-        chartId: 3212,
-        chartName: "r-b-hip-hop-songs",
-        date: "1958-11-24"
-      },
-      {
-        place: 4,
-        chartId: 3213,
-        chartName: "r-b-hip-hop-songs",
-        date: "1958-12-01"
-      },
-      {
-        place: 7,
-        chartId: 3214,
-        chartName: "r-b-hip-hop-songs",
-        date: "1958-12-08"
-      },
-      {
-        place: 7,
-        chartId: 3215,
-        chartName: "r-b-hip-hop-songs",
-        date: "1958-12-15"
-      }
-    ];
-
     it("Should return a value", () => {
       const datasets = getDatasets(entries);
       expect(datasets).toBeDefined();
