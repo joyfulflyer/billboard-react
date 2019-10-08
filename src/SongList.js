@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import styles from "./SongList.module.scss";
 import ChartEntry from "./ChartEntry";
 
