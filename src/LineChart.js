@@ -1,6 +1,6 @@
 import Chart from "chart.js";
 import React, { Component } from "react";
-import { getDates } from "./LineChartUtils";
+import { getDates, getDatasets } from "./LineChartUtils";
 
 export default class LineChart extends Component {
   constructor(props) {
@@ -10,6 +10,7 @@ export default class LineChart extends Component {
 
   componentDidMount() {
     const ctx = this.chartRef.current.getContext("2d");
+    const { entries } = this.props;
 
     /**
      * labels: all of the dates
@@ -18,21 +19,15 @@ export default class LineChart extends Component {
      *      data: [{place, date}]
      *  }
      */
-    console.log("line chart entries", this.props.entries);
-
-    //   const labels = getDates(this.props);
+    const labels = getDates(entries);
+    const datasets = getDatasets(entries);
 
     if (ctx) {
       new Chart(ctx, {
         type: "line",
         data: {
-          labels: [],
-          datasets: [
-            {
-              label: "hot-100",
-              data: [1, 2]
-            }
-          ]
+          labels,
+          datasets
         }
       });
     }
