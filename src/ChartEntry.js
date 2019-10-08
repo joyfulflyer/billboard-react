@@ -23,7 +23,6 @@ class ChartEntry extends React.Component {
     this.props.id &&
       get(`/api/chart/${this.props.id}`)
         .then(({ data }) => {
-          console.log(data);
           this.setState({
             songs: data
           });

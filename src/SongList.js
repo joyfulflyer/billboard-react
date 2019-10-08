@@ -1,7 +1,9 @@
+import React from "react";
 import styles from "./SongList.module.scss";
 import ChartEntry from "./ChartEntry";
 
 function SongList(props) {
+  console.log("songlist", props);
   return (
     <div className={styles.songList}>
       <div className={styles.subheader}>Songs</div>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { get } from "axios";
 import SongList from "./SongList";
+import LineChart from "./LineChart";
 
 class Song extends Component {
   constructor(props) {
@@ -33,6 +34,9 @@ class Song extends Component {
       <div>
         <h1> {this.state.name} </h1>
         <h2> {this.state.artist} </h2>
+        {this.state.entries.length > 0 && (
+          <LineChart entries={this.state.entries} />
+        )}
         <SongList entries={this.state.entries} />
       </div>
     );
