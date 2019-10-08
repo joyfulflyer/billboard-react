@@ -22,18 +22,20 @@ export default class LineChart extends Component {
 
     //   const labels = getDates(this.props);
 
-    new Chart(ctx, {
-      type: "line",
-      data: {
-        labels: [],
-        datasets: [
-          {
-            label: "hot-100",
-            data: [1, 2]
-          }
-        ]
-      }
-    });
+    if (ctx) {
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: [],
+          datasets: [
+            {
+              label: "hot-100",
+              data: [1, 2]
+            }
+          ]
+        }
+      });
+    }
   }
 
   render() {
