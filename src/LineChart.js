@@ -28,6 +28,27 @@ export default class LineChart extends Component {
         data: {
           labels,
           datasets
+        },
+        options: {
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  suggestedMax: 100,
+                  suggestedMin: 0,
+                  reverse: true
+                }
+              }
+            ],
+            xAxes: [
+              {
+                type: "time",
+                unit: "week",
+                distribution: "series",
+                bounds: "data"
+              }
+            ]
+          }
         }
       });
     }
