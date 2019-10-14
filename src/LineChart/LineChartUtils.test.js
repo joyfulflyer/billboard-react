@@ -1,4 +1,4 @@
-import { getDates, getDatasets } from "./LineChartUtils";
+import { getDates, getDatasets, mapColors } from "./LineChartUtils";
 
 const entries = [
   { place: 92, chartId: 5, chartName: "hot-100", date: "1958-08-11" },
@@ -173,6 +173,35 @@ describe("Line chart utils", () => {
       const datasets = getDatasets(mixedEntries);
       const firstDataInFirstDataset = datasets[0].data[0];
       expect(firstDataInFirstDataset.y).toBe(mixedEntries[0].place);
+    });
+  });
+
+  fdescribe("Map Colors", () => {
+    const data = [
+      {
+        label: "hot-100"
+      },
+      {
+        label: "cow"
+      }
+    ];
+
+    it("Should add backgroundcolor and bordercolor to the datasets", () => {
+      mapColors(data);
+      expect(data[0]).toHaveProperty("backgroundColor");
+      expect(data[0]).toHaveProperty("borderColor");
+    });
+
+    it("Should set the color from the color map", () => {
+      mapColors(data);
+      expect(data[0]).toHaveProperty("backgroundColor", "blue");
+      expect(data[0]).toHaveProperty("borderColor", "blue");
+    });
+
+    it("Should unknown labels to black", () => {
+      mapColors(data);
+      expect(data[1]).toHaveProperty("backgroundColor", "black");
+      expect(data[1]).toHaveProperty("borderColor", "black");
     });
   });
 });

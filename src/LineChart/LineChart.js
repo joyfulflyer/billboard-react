@@ -1,6 +1,6 @@
 import Chart from "chart.js";
 import React, { Component } from "react";
-import { getDates, getDatasets } from "./LineChartUtils";
+import { getDates, getDatasets, mapColors } from "./LineChartUtils";
 
 export default class LineChart extends Component {
   constructor(props) {
@@ -21,11 +21,11 @@ export default class LineChart extends Component {
      */
     const labels = getDates(entries);
     const datasets = getDatasets(entries);
-    datasets.forEach(dataset => {
-      dataset.fill = false;
-      dataset.backgroundColor = "red";
-      dataset.borderColor = "blue";
-    });
+    datasets &&
+      datasets.forEach(dataset => {
+        dataset.fill = false;
+      });
+    mapColors(datasets);
 
     if (ctx) {
       new Chart(ctx, {

@@ -1,3 +1,5 @@
+import colorMap from "./colors.json";
+
 /**
  * Returns an array of unique dates found in entries
  * @param entries
@@ -32,9 +34,23 @@ export function getDatasets(entries) {
   if (!Array.isArray(entries)) {
     return;
   }
+
+  // below is the attempt at doing it with a single pass, incomplte
+  const theseCharts = {};
+
+  entries.array.forEach(entry => {
+    debugger;
+    theseCharts[entry.chartName].array.push({
+      x: new Date(entry.date),
+      y: entry.place
+    });
+  });
+
   const chartNames = entries.map(entry => {
     return entry.chartName;
   });
+
+  // end experiment
 
   const uniqueChartNames = [...new Set(chartNames)];
   // for each member of set, filter to get data
@@ -57,4 +73,12 @@ export function getDatasets(entries) {
   });
 
   return objectsFromName;
+}
+
+export function mapColors(datasets) {
+  datasets &&
+    datasets.map(function(dataset) {
+      dataset.backgroundColor = colorMap[dataset.label] || "black";
+      dataset.borderColor = colorMap[dataset.label] || "black";
+    });
 }
