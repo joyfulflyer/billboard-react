@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import LineChart from "./LineChart";
+import LineChart from "./LineChart/LineChart";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");

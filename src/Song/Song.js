@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { get } from "axios";
-import SongList from "./SongList";
-import LineChart from "./LineChart";
+import SongList from "../SongList/SongList";
+import LineChart from "../LineChart/LineChart";
 
 class Song extends Component {
   constructor(props) {

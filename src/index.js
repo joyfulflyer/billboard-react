@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { Router } from "@reach/router";
-import Song from "./Song";
+import Song from "./Song/Song";
 
 ReactDOM.render(
   <Router>

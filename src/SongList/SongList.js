@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./SongList.module.scss";
-import ChartEntry from "./ChartEntry";
+import ChartEntry from "../ChartEntry/ChartEntry";
 
 function SongList(props) {
   return (

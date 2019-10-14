@@ -21,6 +21,11 @@ export default class LineChart extends Component {
      */
     const labels = getDates(entries);
     const datasets = getDatasets(entries);
+    datasets.forEach(dataset => {
+      dataset.fill = false;
+      dataset.backgroundColor = "red";
+      dataset.borderColor = "blue";
+    });
 
     if (ctx) {
       new Chart(ctx, {

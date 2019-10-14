@@ -1,5 +1,5 @@
 import React from "react";
-import ChartEntrySong from "./ChartEntrySong";
+import ChartEntrySong from "../ChartEntrySong/ChartEntrySong";
 import { get } from "axios";
 import styles from "./ChartEntry.module.scss";
 
