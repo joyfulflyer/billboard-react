@@ -44,12 +44,22 @@ class ChartEntry extends React.Component {
     return null;
   }
 
+  getChartEntryHeader(name, place, date) {
+    return (
+      <div className={styles.chartEntryHeader} onClick={this.handleClick}>
+        {`#${this.props.place} on the ${this.props.name} chart on ${this.props.date}`}
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className={styles.chartEntry}>
-        <div className={styles.chartEntryHeader} onClick={this.handleClick}>
-          {`#${this.props.place} on the ${this.props.name} chart on ${this.props.date}`}
-        </div>
+        {this.getChartEntryHeader(
+          this.props.place,
+          this.props.name,
+          this.props.date
+        )}
         {this.getSongContainer(this.state.open, this.state.songs)}
       </div>
     );
