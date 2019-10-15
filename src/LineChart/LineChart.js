@@ -1,6 +1,7 @@
 import Chart from "chart.js";
 import React, { Component } from "react";
 import { getDates, getDatasets, mapColors } from "./LineChartUtils";
+import styles from "./LineChart.module.scss";
 
 export default class LineChart extends Component {
   constructor(props) {
@@ -64,7 +65,7 @@ export default class LineChart extends Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.lineChartContainer}>
         <canvas id="songChart" ref={this.chartRef} />
       </div>
     );

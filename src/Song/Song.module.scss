@@ -1,0 +1,9 @@
+@import "../rem-calc";
+
+.songName {
+  font-size: rem-calc(16);
+}
+
+.songArtist {
+  font-size: rem-calc(14);
+}
