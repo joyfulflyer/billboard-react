@@ -1,9 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import LineChart from "./LineChart";
+import { shallow } from "enzyme";
 
 it("renders without crashing", () => {
-  const div = document.createElement("div");
-  ReactDOM.render(<LineChart />, div);
-  ReactDOM.unmountComponentAtNode(div);
+  const chart = shallow(<LineChart />);
+  expect(chart).toBeDefined();
 });

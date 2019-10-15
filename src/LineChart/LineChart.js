@@ -9,6 +9,9 @@ export default class LineChart extends Component {
   }
 
   componentDidMount() {
+    if (this.chartRef.current === undefined || this.chartRef.current === null) {
+      return;
+    }
     const ctx = this.chartRef.current.getContext("2d");
     const { entries } = this.props;
 

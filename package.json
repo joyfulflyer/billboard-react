@@ -30,6 +30,8 @@
   "proxy": "http://localhost:5000",
   "devDependencies": {
     "@babel/core": "^7.6.2",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
     "prettier": "1.18.2"
   }
 }
