@@ -176,7 +176,7 @@ describe("Line chart utils", () => {
     });
   });
 
-  fdescribe("Map Colors", () => {
+  describe("Map Colors", () => {
     const data = [
       {
         label: "hot-100"

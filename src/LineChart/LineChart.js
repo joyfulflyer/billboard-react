@@ -40,7 +40,7 @@ export default class LineChart extends Component {
               {
                 ticks: {
                   suggestedMax: 100,
-                  suggestedMin: 0,
+                  suggestedMin: 1,
                   reverse: true
                 }
               }
