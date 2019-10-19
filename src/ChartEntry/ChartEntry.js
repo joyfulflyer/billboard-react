@@ -47,7 +47,7 @@ class ChartEntry extends React.Component {
   getChartEntryHeader(name, place, date) {
     return (
       <div className={styles.chartEntryHeader} onClick={this.handleClick}>
-        {`#${this.props.place} on the ${this.props.name} chart on ${this.props.date}`}
+        {`#${place} on the ${name} chart on ${date}`}
       </div>
     );
   }
