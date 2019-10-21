@@ -10,7 +10,6 @@
     display: block;
     text-align: left;
     position: absolute;
-    max-width: 100%;
     text-overflow: ellipsis;
     overflow: hidden;
     font-size: rem-calc(12);
@@ -20,6 +19,10 @@
     @extend .form-control;
     margin: 2px;
   }
+}
+
+.form {
+  @extend .form-inline;
 }
 
 .App-header {

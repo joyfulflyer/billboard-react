@@ -34,20 +34,20 @@ function Header(props) {
 
   return (
     <header className={styles["App-header"]}>
-      <img
-        height="32"
-        width="32"
-        src="https://unpkg.com/@icon/open-iconic/icons/magnifying-glass.svg"
-      />
-      <div className={styles["dropdown"]}>
-        <input
-          type="text"
-          defaultValue={textInput}
-          className={styles["search-box"]}
-          onInput={onInput}
-        />
-        {getSongNames()}
-      </div>
+      <nav className="navbar navbar-light bg-light">
+        <form className={styles.form}>
+          <div className={styles["dropdown"]}>
+            <input
+              type="text"
+              placeholder={`search songs`}
+              className={styles["search-box"]}
+              onInput={onInput}
+            />
+            {getSongNames()}
+          </div>
+          {/* <button className="btn btn-outline-success">Search</button> */}
+        </form>
+      </nav>
     </header>
   );
 }

@@ -37,7 +37,9 @@ class ChartEntry extends React.Component {
       return (
         <div className={styles.songContainer}>
           {songs &&
-            songs.map(song => <ChartEntrySong rank={song.place} {...song} />)}
+            songs.map(song => (
+              <ChartEntrySong id={song.songId} rank={song.place} {...song} />
+            ))}
         </div>
       );
     }
