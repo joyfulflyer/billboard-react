@@ -1,15 +1,35 @@
 import React, { useState } from "react";
 import styles from "./Header.module.scss";
+import { post } from "axios";
+import SearchSongName from "../SearchSongName/SearchSongName";
 
 function Header(props) {
   const [textInput, setTextInput] = useState("");
   const [songNames, setSongNames] = useState([]);
   const onInput = async event => {
-    setTextInput(event.target.value);
+    const value = event.target.value;
+    setTextInput(value);
+    if (value.length === 0) {
+      setSongNames([]);
+      return;
+    }
+    const response = await post("/api/songName", {
+      input: value
+    });
+    const songNames = response.data;
+    setSongNames(songNames);
   };
 
   const getSongNames = () => {
-    return <div className={styles["search-result"]}>{textInput}</div>;
+    if (Array.isArray(songNames) && songNames.length > 0) {
+      return (
+        <div className={styles["search-result"]}>
+          {songNames.map(name => {
+            return <SearchSongName key={name.id} song={name} />;
+          })}
+        </div>
+      );
+    }
   };
 
   return (

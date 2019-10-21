@@ -1,5 +1,5 @@
 @import "bootstrap";
-
+@import "../rem-calc";
 .dropdown {
   @extend .dropdown;
   position: relative;
@@ -7,20 +7,13 @@
 
   .search-result {
     @extend .dropdown-menu;
-    display: none;
-    background-color: white;
-    color: black;
-    min-width: 100%;
+    display: block;
     text-align: left;
     position: absolute;
-    box-shadow: 0px 8px 16px 0px black;
-    padding: 2px;
-  }
-
-  &:hover {
-    .search-result {
-      display: block;
-    }
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: rem-calc(12);
   }
 
   .search-box {

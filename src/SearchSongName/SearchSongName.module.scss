@@ -1,0 +1,7 @@
+@import "bootstrap";
+
+.song-link a {
+  @extend .dropdown-item;
+  //   text-overflow: ellipsis;
+  //   max-width: 100%;
+}
