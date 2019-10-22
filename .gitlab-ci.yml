@@ -16,4 +16,4 @@ test:
 build:
   stage: build
   script:
-    - npm build
+    - npm run-script build
