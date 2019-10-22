@@ -45,7 +45,6 @@ function Header(props) {
             />
             {getSongNames()}
           </div>
-          {/* <button className="btn btn-outline-success">Search</button> */}
         </form>
       </nav>
     </header>
