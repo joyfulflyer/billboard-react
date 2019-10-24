@@ -3,8 +3,8 @@ import styles from "./Header.module.scss";
 import { post } from "axios";
 import SearchSongName from "../SearchSongName/SearchSongName";
 
-function Header(props) {
-  const [textInput, setTextInput] = useState("");
+function Header() {
+  const [, setTextInput] = useState("");
   const [songNames, setSongNames] = useState([]);
   const onInput = async event => {
     const value = event.target.value;
