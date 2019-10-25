@@ -3,6 +3,7 @@ image: "node:12.13.0"
 stages:
   - test
   - build
+  - dockerize
   - deploy
 
 before_script:
@@ -13,7 +14,7 @@ test:
   script:
     - npm test
 
-build:
+build_react:
   stage: build
   script:
     - npm run-script build
@@ -21,3 +22,20 @@ build:
     paths:
       - build/
     expire_in: 1 week
+
+build_ngnix_container:
+  stage: dockerize
+  image: "docker:19.03.3"
+  dependencies:
+    - build_react
+
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+
+  services:
+    - docker:19.03.3-dind
+
+  script:
+    - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
+    - docker build --pull --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA .
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
