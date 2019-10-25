@@ -6,16 +6,17 @@ stages:
   - dockerize
   - deploy
 
-before_script:
-  - npm install
-
 test:
   stage: test
+  before_script:
+    - npm install
   script:
     - npm test
 
 build_react:
   stage: build
+  before_script:
+    - npm install
   script:
     - npm run-script build
   artifacts:
