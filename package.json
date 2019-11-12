@@ -7,8 +7,8 @@
     "@reach/router": "^1.2.1",
     "axios": "^0.18.1",
     "bootstrap": "^4.3.1",
-    "chart.js": "^2.8.0",
-    "node-sass": "^4.12.0",
+    "chart.js": "^2.9.2",
+    "node-sass": "^4.13.0",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
@@ -31,10 +31,10 @@
   ],
   "proxy": "http://localhost:5000",
   "devDependencies": {
-    "@babel/core": "^7.6.4",
+    "@babel/core": "^7.7.2",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
-    "eslint": "^6.5.1",
+    "eslint": "^6.6.0",
     "eslint-plugin-react": "^7.16.0",
     "prettier": "1.18.2"
   }
