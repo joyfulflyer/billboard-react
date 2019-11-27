@@ -58,8 +58,8 @@ class ChartEntry extends React.Component {
     return (
       <div className={styles.chartEntry}>
         {this.getChartEntryHeader(
-          this.props.place,
           this.props.name,
+          this.props.place,
           this.props.date
         )}
         {this.getSongContainer(this.state.open, this.state.songs)}
