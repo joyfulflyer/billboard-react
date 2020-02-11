@@ -8,7 +8,7 @@ class ChartEntry extends React.Component {
     super(props);
     this.state = {
       open: props.open ? props.open : false,
-      songs: []
+      songs: props.entries
     };
     this.handleClick = this.handleClick.bind(this);
   }

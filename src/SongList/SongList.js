@@ -14,6 +14,7 @@ function SongList(props) {
             key={chart.chartId}
             id={chart.chartId}
             place={chart.place}
+            entries={chart.entries}
           />
         ))}
     </div>

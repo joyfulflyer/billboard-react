@@ -17,7 +17,7 @@ class Song extends Component {
 
   componentDidMount() {
     const { songId } = this.props;
-    get(`/api/song/${songId}`)
+    get(`/api/song/${songId}/more`)
       .then(({ data }) => {
         this.setState({
           name: data.name,
