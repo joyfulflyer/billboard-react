@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import SearchComponent from "../SearchComponent/SearchComponent";
 import { get } from "axios";
 
@@ -9,9 +9,11 @@ function SearchPage(props) {
   const [songs, setSongs] = useState([]);
   const submitFunc = async event => {
     event.preventDefault();
+    console.log(`submit`);
     getSearchResults();
   };
-  async function getSearchResults() {
+
+  const getSearchResults = useCallback(async () => {
     var queryString = `?`;
     if (name) {
       queryString = queryString + `name=${name}`;
@@ -28,13 +30,16 @@ function SearchPage(props) {
     } catch (error) {
       console.log(error);
     }
-  }
+  }, [name, artist, setSongs]);
 
   useEffect(() => {
     if (name || artist) {
+      console.log(
+        `getting search results because name and artist are not blank`
+      );
       getSearchResults();
     }
-  });
+  }, [name, artist, getSearchResults]);
   return (
     <div>
       <SearchComponent
@@ -45,7 +50,7 @@ function SearchPage(props) {
       <div>
         {songs.map(entry => {
           return (
-            <div>
+            <div key={entry.id}>
               {entry.name} {entry.artist}
             </div>
           );
