@@ -6,10 +6,12 @@ import * as serviceWorker from "./serviceWorker";
 import { Router } from "@reach/router";
 import Song from "./Song/Song";
 import "bootstrap/dist/css/bootstrap.css";
+import SearchPage from "./Search/SearchPage";
 
 ReactDOM.render(
   <Router>
     <App path="/">
+      <SearchPage path="search/" />
       <Song path="song/:songId" />
     </App>
   </Router>,
