@@ -4,7 +4,7 @@ import { get } from "axios";
 import Song from "../Song/Song";
 
 function SearchPage(props) {
-  const { query = {} } = props.location;
+  const { location: { query = {} } = {} } = props;
   const [name, setSongName] = useState(query.name);
   const [artist, setSongArtist] = useState(query.artist);
   const [selectedSong, selectSong] = useState();
@@ -47,7 +47,7 @@ function SearchPage(props) {
         setName={setSongName}
       />
       <div>
-        <div display>
+        <div>
           {songs.map(entry => {
             return (
               <div
