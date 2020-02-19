@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
 function SearchComponent(props) {
-  const onInput = async event => {};
-
   const inputName = async event => {
     props.setName(event.target.value);
   };

@@ -6,7 +6,6 @@ import styles from "./Song.module.scss";
 
 function Song(props) {
   const [entries, setEntries] = useState([]);
-  const [open, setOpenEntries] = useState([]);
   const [name, setName] = useState(`Song Name`);
   const [artist, setArtist] = useState(`Artist`);
   const { songId } = props;
