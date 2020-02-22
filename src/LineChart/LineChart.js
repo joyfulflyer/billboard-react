@@ -1,20 +1,17 @@
 import Chart from "chart.js";
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { getDates, getDatasets, mapColors } from "./LineChartUtils";
 import styles from "./LineChart.module.scss";
 
-export default class LineChart extends Component {
-  constructor(props) {
-    super(props);
-    this.chartRef = React.createRef();
-  }
+export default function LineChart(props) {
+  const chartRef = React.createRef();
+  const { entries } = props;
 
-  componentDidMount() {
-    if (this.chartRef.current === undefined || this.chartRef.current === null) {
+  useEffect(() => {
+    if (chartRef.current === undefined || chartRef.current === null) {
       return;
     }
-    const ctx = this.chartRef.current.getContext("2d");
-    const { entries } = this.props;
+    const ctx = chartRef.current.getContext("2d");
 
     /**
      * labels: all of the dates
@@ -61,13 +58,11 @@ export default class LineChart extends Component {
         }
       });
     }
-  }
+  }, [entries, chartRef]);
 
-  render() {
-    return (
-      <div className={styles.lineChartContainer}>
-        <canvas id="songChart" ref={this.chartRef} />
-      </div>
-    );
-  }
+  return (
+    <div className={styles.lineChartContainer}>
+      <canvas id="songChart" ref={chartRef} />
+    </div>
+  );
 }
