@@ -7,7 +7,7 @@ function SearchPage(props) {
   const { location: { query = {} } = {} } = props;
   const [name, setSongName] = useState(query.name);
   const [artist, setSongArtist] = useState(query.artist);
-  const [selectedSong, selectSong] = useState();
+  const [selectedSongs, setSelectedSongs] = useState([]);
   const [songs, setSongs] = useState([]);
   const submitFunc = async event => {
     event.preventDefault();
@@ -34,6 +34,20 @@ function SearchPage(props) {
     }
   }, [name, artist, setSongs]);
 
+  const addSelectedSong = entry => {
+    if (!selectedSongs.includes(entry)) {
+      const a = [...selectedSongs, entry];
+      setSelectedSongs(a);
+    }
+  };
+
+  const removeSelectedSong = entry => {
+    const newSongs = selectedSongs.filter(comp => {
+      return entry != comp;
+    });
+    setSelectedSongs(newSongs);
+  };
+
   useEffect(() => {
     if (name || artist) {
       getSearchResults();
@@ -46,6 +60,15 @@ function SearchPage(props) {
         setArtist={setSongArtist}
         setName={setSongName}
       />
+      <div className="pills">
+        {selectedSongs.map(selected => {
+          return (
+            <button onClick={() => removeSelectedSong(selected)}>
+              {selected.name}
+            </button>
+          );
+        })}
+      </div>
       <div>
         <div>
           {songs.map(entry => {
@@ -53,7 +76,7 @@ function SearchPage(props) {
               <div
                 key={entry.id}
                 onClick={() => {
-                  selectSong(entry);
+                  addSelectedSong(entry);
                 }}
               >
                 {entry.name} {entry.artist}
@@ -61,7 +84,11 @@ function SearchPage(props) {
             );
           })}
         </div>
-        <div>{selectedSong && <Song songId={selectedSong.id} />}</div>
+        <div>
+          {selectedSongs && selectedSongs.length > 0 && (
+            <Song songId={selectedSongs[0].id} />
+          )}
+        </div>
       </div>
     </div>
   );
