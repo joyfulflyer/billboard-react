@@ -174,6 +174,17 @@ describe("Line chart utils", () => {
       const firstDataInFirstDataset = datasets[0].data[0];
       expect(firstDataInFirstDataset.y).toBe(mixedEntries[0].place);
     });
+
+    it("Should handle null entries", () => {
+      const data = [
+        { place: 96, chartId: 6, chartName: "hot-100", date: "1958-08-18" },
+        { place: 40, chartId: 7, chartName: "hot-100", date: "1958-08-25" },
+        null,
+        { place: 22, chartId: 8, chartName: "hot-100", date: "1958-09-01" }
+      ];
+      const datasets = getDatasets(data);
+      expect(datasets).toBeDefined();
+    });
   });
 
   describe("Map Colors", () => {

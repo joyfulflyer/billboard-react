@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import SearchComponent from "../SearchComponent/SearchComponent";
 import { get } from "axios";
-import Song from "../Song/Song";
+import MultiSong from "../MultiSong/MultiSong";
 
 function SearchPage(props) {
   const { location: { query = {} } = {} } = props;
@@ -43,7 +43,7 @@ function SearchPage(props) {
 
   const removeSelectedSong = entry => {
     const newSongs = selectedSongs.filter(comp => {
-      return entry != comp;
+      return entry !== comp;
     });
     setSelectedSongs(newSongs);
   };
@@ -60,15 +60,6 @@ function SearchPage(props) {
         setArtist={setSongArtist}
         setName={setSongName}
       />
-      <div className="pills">
-        {selectedSongs.map(selected => {
-          return (
-            <button onClick={() => removeSelectedSong(selected)}>
-              {selected.name}
-            </button>
-          );
-        })}
-      </div>
       <div>
         <div>
           {songs.map(entry => {
@@ -84,9 +75,18 @@ function SearchPage(props) {
             );
           })}
         </div>
+        <div className="pills">
+          {selectedSongs.map(selected => {
+            return (
+              <button onClick={() => removeSelectedSong(selected)}>
+                {selected.name}
+              </button>
+            );
+          })}
+        </div>
         <div>
           {selectedSongs && selectedSongs.length > 0 && (
-            <Song songId={selectedSongs[0].id} />
+            <MultiSong entries={selectedSongs} />
           )}
         </div>
       </div>

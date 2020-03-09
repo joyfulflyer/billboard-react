@@ -24,7 +24,9 @@ export default function LineChart(props) {
     const datasets = getDatasets(entries);
     datasets &&
       datasets.forEach(dataset => {
-        dataset.fill = false;
+        if (dataset && dataset.fill) {
+          dataset.fill = false;
+        }
       });
     mapColors(datasets);
 
