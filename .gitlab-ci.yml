@@ -27,7 +27,7 @@ build_react:
 
 build_ngnix_container:
   stage: dockerize
-  image: "docker:19.03.3"
+  image: "docker:20.10"
   dependencies:
     - build_react
 
@@ -35,12 +35,12 @@ build_ngnix_container:
     DOCKER_TLS_CERTDIR: "/certs"
 
   services:
-    - docker:19.03.3-dind
+    - docker:20.10-dind
 
   script:
+    - docker buildx create --use
     - echo -n $CI_JOB_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY
-    - docker build --pull --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA .
-    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+    - docker buildx build  --platform linux/arm/v7,linux/arm64/v8 --pull --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA --push .
 
 tag_master:
   stage: push
