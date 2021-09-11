@@ -1,0 +1,48 @@
+version: "3"
+services:
+  web:
+    image: registry.gitlab.com/joyfulflyer/billboard-react:latest
+    container_name: web
+    ports:
+      - "8080:80"
+    networks:
+      - charts
+    depends_on:
+      - viewer
+
+  viewer:
+    image: billboard-viewer:local
+    container_name: viewer
+    #    command: ["python", "application.py", "--port=8000"]
+    # ports:
+    #   - "8000:8000"
+    #      - "5000:5000"
+    environment:
+      DATABASE: billboard_charts
+      DB_TYPE: sqlite
+      DB_USERNAME: chart
+      DB_HOST: notused
+      PASS: notused
+      DB_FILE_NAME: /db/20210903.sqlite
+    volumes:
+      - /home/joyfulflyer/repos/billboard-song-converter/:/db/
+    networks:
+      - charts
+
+  # db:
+  #   image: registry.gitlab.com/joyfulflyer/billboard-db:latest
+  #   container_name: wdb
+  #   ports:
+  #     - "3306:3306"
+  #   environment:
+  #     MYSQL_DATABASE: billboard_charts
+  #     MYSQL_USER: chart
+  #     MYSQL_PASSWORD: "qwerty"
+  #     MYSQL_ROOT_PASSWORD: "chartshere"
+  #   networks:
+  #     - charts
+
+networks:
+  charts:
+    # admin
+    # WTpSY5A3cfHKC0IOJXT1
