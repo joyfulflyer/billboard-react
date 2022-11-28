@@ -1,4 +1,4 @@
-import { getDates, getDatasets, mapColors } from "./LineChartUtils";
+import { getDates, getDatasets, mapColors, expandDateGaps } from "./LineChartUtils";
 
 const entries = [
   { place: 92, chartId: 5, chartName: "hot-100", date: "1958-08-11" },
@@ -91,6 +91,131 @@ const mixedEntries = [
     date: "1958-12-15"
   }
 ];
+
+const discontinuousEntries = [
+  { y: 96, x: "1958-08-18" },
+  { y: 22, x: "1958-09-01" },
+  { y: 11, x: "1958-09-08" },
+]
+
+const yearJumpingEntries = [
+  {
+      x: "1994-12-31T00:00:00.000Z",
+      y: 8
+  },
+  {
+      x: "1995-01-07T00:00:00.000Z",
+      y: 28
+  },
+  {
+      x: "1995-01-14T00:00:00.000Z",
+      y: 50
+  },
+  {
+      x: "1995-02-04T00:00:00.000Z",
+      y: 87
+  },
+  {
+      x: "1995-02-11T00:00:00.000Z",
+      y: 83
+  },
+  {
+      x: "1995-02-18T00:00:00.000Z",
+      y: 93
+  },
+  {
+      x: "1995-02-25T00:00:00.000Z",
+      y: 100
+  },
+  {
+      x: "1995-03-04T00:00:00.000Z",
+      y: 59
+  },
+  {
+      x: "1995-03-11T00:00:00.000Z",
+      y: 79
+  },
+  {
+      x: "1995-03-18T00:00:00.000Z",
+      y: 76
+  },
+  {
+      x: "2007-11-17T00:00:00.000Z",
+      y: 78
+  },
+  {
+      x: "2007-11-24T00:00:00.000Z",
+      y: 46
+  },
+  {
+      x: "2007-12-01T00:00:00.000Z",
+      y: 23
+  },
+  {
+      x: "2007-12-08T00:00:00.000Z",
+      y: 8
+  },
+  {
+      x: "2007-12-15T00:00:00.000Z",
+      y: 4
+  },
+  {
+      x: "2007-12-22T00:00:00.000Z",
+      y: 6
+  },
+  {
+      x: "2007-12-29T00:00:00.000Z",
+      y: 20
+  },
+  {
+      x: "2008-11-15T00:00:00.000Z",
+      y: 59
+  },
+  {
+      x: "2008-11-22T00:00:00.000Z",
+      y: 45
+  },
+  {
+      x: "2008-11-29T00:00:00.000Z",
+      y: 37
+  },
+  {
+      x: "2008-12-06T00:00:00.000Z",
+      y: 17
+  },
+  {
+      x: "2008-12-13T00:00:00.000Z",
+      y: 12
+  },
+  {
+      x: "2008-12-20T00:00:00.000Z",
+      y: 17
+  },
+  {
+      x: "2008-12-27T00:00:00.000Z",
+      y: 25
+  },
+  {
+      x: "2009-11-21T00:00:00.000Z",
+      y: 77
+  },
+  {
+      x: "2009-11-28T00:00:00.000Z",
+      y: 51
+  },
+  {
+      x: "2009-12-05T00:00:00.000Z",
+      y: 29
+  },
+  {
+      x: "2009-12-12T00:00:00.000Z",
+      y: 19
+  },
+  {
+      x: "2009-12-19T00:00:00.000Z",
+      y: 21
+  }
+]
 
 describe("Line chart utils", () => {
   describe("getDates", () => {
@@ -204,4 +329,31 @@ describe("Line chart utils", () => {
       expect(data[1]).toHaveProperty("borderColor", "black");
     });
   });
+
+  describe("Discontinuous dates", () => {
+    it ("Should not modify the original array", () => {
+      const initialCopy = [...discontinuousEntries]
+      expandDateGaps(discontinuousEntries)
+      expect(discontinuousEntries).toBeDefined()
+      expect(discontinuousEntries).toHaveLength(initialCopy.length)
+    })
+
+    it("Should add null when dates are more than 10 days away from each other", () => {
+      const expanded = expandDateGaps(discontinuousEntries)
+      expect(expanded).toHaveLength(discontinuousEntries.length+1)
+      expect(expanded[0]).toHaveProperty("x", "1958-08-18")
+      expect(expanded[1]).toBe(null)
+      expect(expanded[2]).toHaveProperty("x", "1958-09-01")
+      expect(expanded[3]).toHaveProperty("x", "1958-09-08")
+    })
+
+    it("Should handle dates more than a year apart", () => {
+      debugger
+      const expanded = expandDateGaps(yearJumpingEntries)
+      expect(expanded[0]).toHaveProperty("x", "1994-12-31T00:00:00.000Z")
+      expect(expanded[1]).toHaveProperty("x", "1995-01-07T00:00:00.000Z")
+      expect(expanded[3]).toBe(null)
+      expect(expanded[11]).toBe(null)
+    })
+  })
 });

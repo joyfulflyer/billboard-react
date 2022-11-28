@@ -25,6 +25,7 @@ export function getDates(entries) {
  *      label: chartName,
  *      data: [{place, date}]
  *  }
+ * @returns [{label: chart name, data: [{x: date, y: place}], tension: 0.1}]
  */
 export function getDatasets(entries) {
   if (!Array.isArray(entries)) {
@@ -42,6 +43,11 @@ export function getDatasets(entries) {
     });
   });
 
+  theseCharts.forEach((value, key) => {
+    theseCharts.set(key, expandDateGaps(value))
+  })
+
+
   const datasets = [];
   theseCharts.forEach((value, key) => {
     datasets.push({
@@ -54,9 +60,30 @@ export function getDatasets(entries) {
   return datasets;
 }
 
+/**
+ * Adds null between discontinuous dates. 
+ * @param {[{x: Date, y: String}]} initialEntries 
+ */
+export function expandDateGaps(initialEntries) {
+  const TEN_DAYS = 1000*60*60*24*10
+  const entries = [...initialEntries]
+  for (let i = 0; i < entries.length - 1; i++) {
+    if (entries[i] != null && entries[i+1] != null) {
+      const curEntry = entries[i]
+      const nextEntry = entries[i + 1]
+      const curDate = new Date(curEntry.x)
+      const nextDate = new Date(nextEntry.x)
+      if (nextDate.getTime() - curDate.getTime() > TEN_DAYS) {
+        entries.splice(i+1, 0, null)
+      }
+    }
+  }
+  return entries;
+}
+
 export function mapColors(datasets) {
   datasets &&
-    datasets.forEach(function(dataset) {
+    datasets.forEach(function (dataset) {
       dataset.backgroundColor = colorMap[dataset.label] || "black";
       dataset.borderColor = colorMap[dataset.label] || "black";
     });
