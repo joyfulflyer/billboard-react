@@ -21,11 +21,27 @@
   }
 }
 
+.artist-box {
+  @extend .form-control;
+  margin: 10px;
+}
+
+.header-search-submit {
+  @extend .btn-light
+}
+
+.form-container {
+  display: flex
+}
+
+.form {
+  display: row;
+}
 
 .App-header {
   background-color: gray;
-  display: flexbox;
-  flex-direction: column;
+  display: row;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);

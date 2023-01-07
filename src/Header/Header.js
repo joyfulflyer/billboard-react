@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Header.module.scss";
-import { post } from "axios";
+import axios from "axios";
 import SearchSongName from "../SearchSongName/SearchSongName";
 
 function Header() {
@@ -13,7 +13,7 @@ function Header() {
       setSongNames([]);
       return;
     }
-    const response = await post("/api/songName", {
+    const response = await axios.post("/api/songName", {
       input: value
     });
     const songNames = response.data;
@@ -35,15 +35,25 @@ function Header() {
   return (
     <header className={styles["App-header"]}>
       <nav className="navbar navbar-light bg-light">
-        <form className={styles.form}>
-          <div className={styles["dropdown"]}>
-            <input
-              type="text"
-              placeholder={`search songs`}
-              className={styles["search-box"]}
-              onInput={onInput}
-            />
-            {getSongNames()}
+        <form className={styles["form"]}>
+          <div class="form-row">
+            <div class="col">
+              {/* <div className={styles["dropdown"]}> */}
+                <input
+                  type="text"
+                  placeholder={`search songs`}
+                  className={styles["search-box"]}
+                  onInput={onInput}
+                />
+                {getSongNames()}
+              {/* </div> */}
+            </div>
+            <div class="col">
+              <input type="text" className={styles["artist-box"]} placeholder={`Artist`} />
+            </div>
+            <div class="col">
+              <button type="submit" className={styles["header-search-submit"]}>Search</button>
+            </div>
           </div>
         </form>
       </nav>
