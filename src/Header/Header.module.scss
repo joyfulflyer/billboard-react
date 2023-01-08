@@ -1,22 +1,27 @@
-@import "bootstrap";
 @import "../rem-calc";
+
 .dropdown {
-  @extend .dropdown;
   position: relative;
   display: inline-block;
 
   .search-result {
-    @extend .dropdown-menu;
+
     display: block;
     text-align: left;
     position: absolute;
     text-overflow: ellipsis;
-    overflow: hidden;
+    color: black;
+    border: black;
+    border: 2px;
+    background-color: rgb(220, 239, 255);
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 5px;
+
     font-size: rem-calc(12);
   }
 
   .search-box {
-    @extend .form-control;
     margin: 2px;
   }
 }
