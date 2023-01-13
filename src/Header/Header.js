@@ -34,7 +34,7 @@ function Header() {
 
   return (
     <header className={styles["App-header"]}>
-      <nav className="navbar navbar-light bg-light">
+      <nav className={styles['navbar']}>
         <form className={styles.form}>
           <div className={styles["dropdown"]}>
             <input

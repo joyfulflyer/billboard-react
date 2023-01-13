@@ -1,9 +1,23 @@
 // @import "bootstrap";
 
 .song-link a {
-  padding: 5px;
+  display: block;
+  padding: 0.25rem 0.75rem;
   max-width: 100%;
+  background-color: transparent;
   // @extend .dropdown-item;
   //   text-overflow: ellipsis;
   //   max-width: 100%;
+}
+
+.song-link a:hover {
+  background-color: #f8f9fa;
+}
+
+.song-name {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  color: #212529;
 }
