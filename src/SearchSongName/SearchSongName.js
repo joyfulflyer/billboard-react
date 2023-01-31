@@ -6,7 +6,7 @@ function SearchSongName(props) {
 
   return (
     <div className={styles["song-link"]}>
-      <a href={`/song/${song.id}`}>
+      <a href={`/song/${song.id}`} className={styles["song-name"]}>
         {song.name} - {song.artist}
       </a>
     </div>
