@@ -1,6 +1,6 @@
 import React from "react";
 import ChartEntrySong from "../ChartEntrySong/ChartEntrySong";
-import { get } from "axios";
+import axios from "axios";
 import styles from "./ChartEntry.module.scss";
 
 class ChartEntry extends React.Component {
@@ -21,7 +21,7 @@ class ChartEntry extends React.Component {
 
   componentDidMount() {
     this.props.id &&
-      get(`/api/chart/${this.props.id}`)
+      axios.get(`/api/chart/${this.props.id}`)
         .then(({ data }) => {
           this.setState({
             songs: data

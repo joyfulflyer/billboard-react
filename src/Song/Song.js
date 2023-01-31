@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { get } from "axios";
+import axios from "axios";
 import SongList from "../SongList/SongList";
 import LineChart from "../LineChart/LineChart";
 import styles from "./Song.module.scss";
@@ -17,7 +17,7 @@ class Song extends Component {
 
   componentDidMount() {
     const { songId } = this.props;
-    get(`/api/song/${songId}`)
+    axios.get(`/api/song/${songId}`)
       .then(({ data }) => {
         this.setState({
           name: data.name,
