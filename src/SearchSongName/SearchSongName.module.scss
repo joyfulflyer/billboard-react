@@ -1,13 +1,9 @@
-// @import "bootstrap";
 
 .song-link a {
   display: block;
   padding: 0.25rem 0.75rem;
   max-width: 100%;
   background-color: transparent;
-  // @extend .dropdown-item;
-  //   text-overflow: ellipsis;
-  //   max-width: 100%;
 }
 
 .song-link a:hover {
