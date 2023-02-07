@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Header.module.scss";
 import axios from "axios";
-import axios from "axios";
 import SearchSongName from "../SearchSongName/SearchSongName";
 
 function Header() {
@@ -37,9 +36,7 @@ function Header() {
     <header className={styles["App-header"]}>
       <nav className={styles['navbar']}>
         <form className={styles["form"]}>
-          <div class="form-row">
-            <div class="col">
-              {/* <div className={styles["dropdown"]}> */}
+              <div className={styles["dropdown"]}>
                 <input
                   type="text"
                   placeholder={`search songs`}
@@ -47,15 +44,9 @@ function Header() {
                   onInput={onInput}
                 />
                 {getSongNames()}
-              {/* </div> */}
-            </div>
-            <div class="col">
+              </div>
               <input type="text" className={styles["artist-box"]} placeholder={`Artist`} />
-            </div>
-            <div class="col">
               <button type="submit" className={styles["header-search-submit"]}>Search</button>
-            </div>
-          </div>
         </form>
       </nav>
     </header>

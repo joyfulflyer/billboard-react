@@ -5,11 +5,13 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { Router } from "@reach/router";
 import Song from "./Song/Song";
+import SearchResultPage from "./SearchResultsPage/SearchResultsPage";
 
 ReactDOM.render(
   <Router>
     <App path="/">
       <Song path="song/:songId" />
+      <SearchResultPage path = "search/" />
     </App>
   </Router>,
   document.getElementById("root")
