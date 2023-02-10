@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import styles from "./Header.module.scss";
 import axios from "axios";
 import SearchSongName from "../SearchSongName/SearchSongName";
+import { navigate } from "@reach/router";
 
 function Header() {
-  const [, setTextInput] = useState("");
+  const [songName, setNameField] = useState("");
+  const [artist, setArtist] = useState("")
   const [songNames, setSongNames] = useState([]);
   const onInput = async event => {
     const value = event.target.value;
-    setTextInput(value);
+    setNameField(value);
     if (value.length === 0) {
       setSongNames([]);
       return;
@@ -32,6 +34,22 @@ function Header() {
     }
   };
 
+  const onClickSearch = () => {
+    var url = '/search?'
+    if (songName) {
+        url = url.concat(`name=${songName}`)
+    }
+
+    if (artist) {
+        if (songName) {
+            url = url.concat('&')
+        }
+        url = url.concat(`artist=${artist}`)
+    }
+
+    navigate(url)
+  }
+
   return (
     <header className={styles["App-header"]}>
       <nav className={styles['navbar']}>
@@ -45,8 +63,16 @@ function Header() {
                 />
                 {getSongNames()}
               </div>
-              <input type="text" className={styles["artist-box"]} placeholder={`Artist`} />
-              <button type="submit" className={styles["header-search-submit"]}>Search</button>
+              <input type="text" 
+              className={styles["artist-box"]} 
+              placeholder={`Artist`} 
+              onInput={e => setArtist(e.target.value)}
+              />
+              <button 
+              type="submit" 
+              className={styles["header-search-submit"]}
+              onClick={onClickSearch}
+              >Search</button>
         </form>
       </nav>
     </header>
