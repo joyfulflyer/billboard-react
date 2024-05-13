@@ -1,7 +1,7 @@
 import { useLocation } from "@reach/router";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import SearchSongName from "../SearchSongName/SearchSongName";
+import SearchSongName from "../../SearchSongName/SearchSongName";
 
 function SearchResultPage() {
 

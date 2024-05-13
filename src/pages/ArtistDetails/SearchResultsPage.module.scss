@@ -1,0 +1,26 @@
+// created by ai, I'm not sure if it will actually work
+.artist-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.artist-details__image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.artist-details__name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.artist-details__description {
+    margin-top: 20px;
+    text-align: center;
+}

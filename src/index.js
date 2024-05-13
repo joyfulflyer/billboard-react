@@ -5,7 +5,8 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { Router } from "@reach/router";
 import Song from "./Song/Song";
-import SearchResultPage from "./SearchResultsPage/SearchResultsPage";
+import SearchResultPage from "./pages/SearchResultsPage/SearchResultsPage";
+import ArtistDetailsPage from "./pages/ArtistDetails/ArtistDetailsPage";
 
 const container = document.getElementById('root');
 const root = createRoot(container)
@@ -13,7 +14,8 @@ root.render(
   <Router>
     <App path="/">
       <Song path="song/:songId" />
-      <SearchResultPage path = "search/" />
+      <SearchResultPage path="search/" />
+      <ArtistDetailsPage path="artist/:artistId" />
     </App>
   </Router>
 );
