@@ -1,26 +1,49 @@
 // created by ai, I'm not sure if it will actually work
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
 .artist-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+    background: #fff;
     padding: 20px;
-}
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
 
-.artist-details__image {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-}
+    &__image {
+        width: 100%;
+        height: auto;
+    }
 
-.artist-details__name {
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 10px;
-}
+    &__name {
+        margin-top: 20px;
+        font-size: 2em;
+        color: #333;
+    }
 
-.artist-details__description {
-    margin-top: 20px;
-    text-align: center;
+    &__description {
+        font-size: 1em;
+        color: #666;
+        margin-top: 10px;
+    }
+
+    &__popular-songs {
+        margin-top: 20px;
+        font-size: 1.5em;
+        color: #333;
+    }
+
+    &__songs {
+        list-style: none;
+        padding: 0;
+
+        &__song {
+            padding: 10px 0;
+            border-bottom: 1px solid #f4f4f4;
+        }
+    }
 }

@@ -15,7 +15,7 @@ root.render(
     <App path="/">
       <Song path="song/:songId" />
       <SearchResultPage path="search/" />
-      <ArtistDetailsPage path="artist/:artistId" />
+      <ArtistDetailsPage path="artist/" />
     </App>
   </Router>
 );
