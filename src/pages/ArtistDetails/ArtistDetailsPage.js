@@ -24,10 +24,11 @@ const ArtistDetailsPage = () => {
     }, [])
 
     useEffect(() => {
+        console.log(songs)
         if (songs.length > 0) {
             setArtistName(songs[0].artist)
         }
-    }, songs)
+    }, [songs])
 
 
     return (
@@ -40,7 +41,11 @@ const ArtistDetailsPage = () => {
                 <h3 className="artist-details__popular-songs">Popular Songs</h3>
                 <div className="artist-details__songs">
                     {songs.map((song, index) => (
-                        <div className="artist-details__song" key={index}>{song.name}</div>
+                        (<div key={index}>
+                            <a href={`/song/${song.id}`} className="">{song.name} - YYYY - #5</a>
+                        <br></br>
+                        </div>)
+                        // <div className="artist-details__song" key={index}>{song.name}</div>
                     ))}
                 </div>
             </div>
