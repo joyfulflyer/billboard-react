@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from 'react';
 import { useQuery } from '../../components/hooks/useQuery';
+import styles from "./artistDetailsPage.module.scss";
 
 
 const ArtistDetailsPage = () => {
@@ -42,7 +43,7 @@ const ArtistDetailsPage = () => {
                 <div className="artist-details__songs">
                     {songs.map((song, index) => (
                         (<div key={index}>
-                            <a href={`/song/${song.id}`} className="">{song.name} - YYYY - #5</a>
+                            <a href={`/song/${song.id}`} className="">{song.name} - {song.date} - #{song.topPlace}</a>
                         <br></br>
                         </div>)
                         // <div className="artist-details__song" key={index}>{song.name}</div>

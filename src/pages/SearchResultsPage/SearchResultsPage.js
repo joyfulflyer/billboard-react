@@ -7,6 +7,8 @@ function SearchResultPage() {
 
     const [searchresults, setSearchResults] = useState([])
     const [query] = useState(new URLSearchParams(useLocation().search) || 'Search')
+    const [nameQuery, setNameQuery] = useState(query.get('name'))
+    const [artistQuery, setArtistQuery] = useState(query.get('artist'))
 
     const sendSearch = async (songName, artist) => {
         var url = '/api/search?'
@@ -45,8 +47,42 @@ function SearchResultPage() {
         }
     }
 
+    const onClickAnd = () => {
+        // TODO
+    }
+
+    const onClickOr = () => {
+        // TODO
+    }
+
+    // I should only re-render the bottom half but can do a full page refresh for now
+    const searchForm = () => {
+        return (
+            <div className="main_search_form">
+                <div>
+                <form action="/search" method="get">
+                    <input type="search" id="nameSearchField" name="name" placeholder="search song names" onInput={e => setNameQuery(e.target.value)} defaultValue={nameQuery || ''} />
+                    <button type="submit">Search</button>
+                </form>
+                </div>
+                <div>
+                <form action="/search" method="get">
+                        <input type="search" id="artistSearchField" name="artist" placeholder="search artists" onChange={e => setArtistQuery(e.target.value)} defaultValue={artistQuery|| ''}/>
+                        <button type="submit">Search</button>
+                    </form>
+                </div>
+                <div>
+                    <form>
+                        <button type="submit" onClick={e => onClickOr(e.target.value)}>OR</button>
+                        <button type="submit" onClick={e => onClickAnd(e.target.value)}>AND</button>
+                    </form>
+                </div>
+            </div>
+        )
+    }
+
     return (
-        <div>{showSongNames()}</div>
+        <div>{searchForm()}{showSongNames()}</div>
     )
 }
 

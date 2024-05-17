@@ -6,7 +6,6 @@ import { navigate } from "@reach/router";
 
 function Header() {
   const [songName, setNameField] = useState("");
-  const [artist, setArtist] = useState("")
   const [songNames, setSongNames] = useState([]);
   const onInput = async event => {
     const value = event.target.value;
@@ -56,23 +55,19 @@ function Header() {
         <form className={styles["form"]}>
               <div className={styles["dropdown"]}>
                 <input
-                  type="text"
+                  type="search"
                   placeholder={`search songs`}
                   className={styles["search-box"]}
                   onInput={onInput}
                 />
                 {getSongNames()}
               </div>
-              <input type="text" 
-              className={styles["artist-box"]} 
-              placeholder={`Artist`} 
-              onInput={e => setArtist(e.target.value)}
-              />
               <button 
               type="submit" 
               className={styles["header-search-submit"]}
               onClick={onClickSearch}
               >Search</button>
+              <a href="/search">Advanced Search</a>
         </form>
       </nav>
     </header>
