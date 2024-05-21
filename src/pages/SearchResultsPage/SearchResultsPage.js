@@ -35,7 +35,7 @@ function SearchResultPage() {
 
     // searchType is generally 'AND' or 'OR'
     // I could pass the query through but I'm reconstructing it here for now
-    const sendSearch = async (songName, artist, searchType=undefined) => {
+    const sendSearch = async (songName, artist, searchType = undefined) => {
         var url = '/api/search?'
         url = generateSearchParams(songName, url, artist, searchType);
         try {
@@ -72,23 +72,24 @@ function SearchResultPage() {
             navigate(generateSearchParams(nameQuery, baseUrl, artistQuery, searchType))
             setSearchResults(result)
         }).catch(err => {
-        console.log(err)
+            console.log(err)
         })
     }
 
     // I should only re-render the bottom half but can do a full page refresh for now
+    // Do I want a separate artist results?
     const searchForm = () => {
         return (
             <div className="main_search_form">
                 <div>
-                <form action="/search" method="get">
-                    <input type="search" id="nameSearchField" name="name" placeholder="search song names" onInput={e => setNameQuery(e.target.value)} defaultValue={nameQuery || ''} />
-                    <button type="submit">Search</button>
-                </form>
+                    <form action="/search" method="get">
+                        <input type="search" id="nameSearchField" name="name" placeholder="search song names" onInput={e => setNameQuery(e.target.value)} defaultValue={nameQuery || ''} />
+                        <button type="submit">Search</button>
+                    </form>
                 </div>
                 <div>
-                <form action="/search" method="get">
-                        <input type="search" id="artistSearchField" name="artist" placeholder="search artists" onChange={e => setArtistQuery(e.target.value)} defaultValue={artistQuery|| ''}/>
+                    <form action="/search" method="get">
+                        <input type="search" id="artistSearchField" name="artist" placeholder="search artists" onChange={e => setArtistQuery(e.target.value)} defaultValue={artistQuery || ''} />
                         <button type="submit">Search</button>
                     </form>
                 </div>
