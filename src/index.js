@@ -1,17 +1,22 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from 'react-dom/client';
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { Router } from "@reach/router";
+import { Router, LocationProvider } from "@reach/router";
 import Song from "./Song/Song";
 
-ReactDOM.render(
-  <Router>
-    <App path="/">
-      <Song path="song/:songId" />
-    </App>
-  </Router>,
+const container = document.getElementById('root');
+const root = createRoot(container);
+
+root.render(
+  <LocationProvider>
+    <Router>
+      <App path="/">
+        <Song path="song/:songId" />
+      </App>
+    </Router>
+  </LocationProvider>,
   document.getElementById("root")
 );
 
