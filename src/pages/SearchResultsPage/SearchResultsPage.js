@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import SearchSongName from "../../SearchSongName/SearchSongName";
+import SearchSongName from "../../components/SearchSongName/SearchSongName";
 
 function SearchResultPage() {
 

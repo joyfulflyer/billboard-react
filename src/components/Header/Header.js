@@ -8,7 +8,6 @@ function Header() {
   const [songName, setNameField] = useState("");
   const [songNames, setSongNames] = useState([]);
   const navigate = useNavigate();
-  
   const onInput = async event => {
     const value = event.target.value;
     setNameField(value);

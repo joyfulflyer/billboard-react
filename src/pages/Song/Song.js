@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import LineChart from "../LineChart/LineChart";
-import SongList from "../SongList/SongList";
+import LineChart from "../../components/LineChart/LineChart";
+import SongList from "../../components/SongList/SongList";
 import styles from "./Song.module.scss";
 
 function Song(props) {
