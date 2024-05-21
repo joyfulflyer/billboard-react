@@ -5,7 +5,8 @@ import styles from "./App.module.scss";
 import Header from "./Header/Header";
 import Song from "./Song/Song";
 import "./index.css";
-import { createRoot } from 'react-dom/client';
+import ArtistDetailsPage from "./pages/ArtistDetails/ArtistDetailsPage";
+import SearchResultPage from "./pages/SearchResultsPage/SearchResultsPage";
 import * as serviceWorker from "./serviceWorker";
 
 
@@ -18,24 +19,11 @@ root.render(
       <Header />
       <Routes>
         <Route element={<Song />} path="song/:songId" />
+        <Route path="search/" element={<SearchResultPage />} />
+        <Route path="artist/" element={<ArtistDetailsPage />} />
       </Routes>
     </div>
   </BrowserRouter>
-import { Router } from "@reach/router";
-import Song from "./Song/Song";
-import SearchResultPage from "./pages/SearchResultsPage/SearchResultsPage";
-import ArtistDetailsPage from "./pages/ArtistDetails/ArtistDetailsPage";
-
-const container = document.getElementById('root');
-const root = createRoot(container)
-root.render(
-  <Router>
-    <App path="/">
-      <Song path="song/:songId" />
-      <SearchResultPage path="search/" />
-      <ArtistDetailsPage path="artist/" />
-    </App>
-  </Router>
 );
 
 // If you want your app to work offline and load faster, you can change
