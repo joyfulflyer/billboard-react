@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import styles from "./Header.module.scss";
 import axios from "axios";
 import SearchSongName from "../SearchSongName/SearchSongName";
-import { navigate } from "@reach/router";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
   const [songName, setNameField] = useState("");
   const [songNames, setSongNames] = useState([]);
+  const navigate = useNavigate();
+  
   const onInput = async event => {
     const value = event.target.value;
     setNameField(value);
