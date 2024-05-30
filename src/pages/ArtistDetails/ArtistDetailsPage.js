@@ -10,7 +10,6 @@ const ArtistDetailsPage = () => {
     const [artistName, setArtistName] = useState('')
     const query = useQuery('artist')
 
-
     useEffect(() => {
         const fetchArtist = async () => {
             try {
@@ -29,7 +28,6 @@ const ArtistDetailsPage = () => {
             setArtistName(songs[0].artist)
         }
     }, [songs])
-
 
     return (
         <div>

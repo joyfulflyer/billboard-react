@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import SearchSongName from "../../components/SearchSongName/SearchSongName";
 
 function SearchResultPage() {
-
     const [searchresults, setSearchResults] = useState([])
     const [query] = useState(new URLSearchParams(useLocation().search) || 'Search')
     const [nameQuery, setNameQuery] = useState(query.get('name'))
@@ -31,7 +30,6 @@ function SearchResultPage() {
         }
         return url;
     }
-
 
     // searchType is generally 'AND' or 'OR'
     // I could pass the query through but I'm reconstructing it here for now
@@ -83,13 +81,15 @@ function SearchResultPage() {
             <div className="main_search_form">
                 <div>
                     <form action="/search" method="get">
-                        <input type="search" id="nameSearchField" name="name" placeholder="search song names" onInput={e => setNameQuery(e.target.value)} defaultValue={nameQuery || ''} />
+                        <input type="search" id="nameSearchField" name="name" placeholder="search song names"
+                            onInput={e => setNameQuery(e.target.value)} defaultValue={nameQuery || ''} />
                         <button type="submit">Search</button>
                     </form>
                 </div>
                 <div>
                     <form action="/search" method="get">
-                        <input type="search" id="artistSearchField" name="artist" placeholder="search songs by artist" onChange={e => setArtistQuery(e.target.value)} defaultValue={artistQuery || ''} />
+                        <input type="search" id="artistSearchField" name="artist" placeholder="search songs by artist"
+                            onChange={e => setArtistQuery(e.target.value)} defaultValue={artistQuery || ''} />
                         <button type="submit">Search</button>
                     </form>
                 </div>
