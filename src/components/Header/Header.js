@@ -50,7 +50,7 @@ function Header() {
           <button type="submit" className={styles["header-search-submit"]} >
             Search
           </button>
-          <a href="/search">Advanced Search</a>
+          <a href="/search" className={styles["advanced-search"]}>Advanced Search</a>
         </form>
       </nav>
     </header>
