@@ -2,9 +2,11 @@ import React from "react";
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styles from "./App.module.scss";
-import Header from "./Header/Header";
-import Song from "./Song/Song";
+import Header from "./components/Header/Header";
+import Song from "./pages/Song/Song";
 import "./index.css";
+import ArtistDetailsPage from "./pages/ArtistDetails/ArtistDetailsPage";
+import SearchResultPage from "./pages/SearchResultsPage/SearchResultsPage";
 import * as serviceWorker from "./serviceWorker";
 
 
@@ -17,6 +19,8 @@ root.render(
       <Header />
       <Routes>
         <Route element={<Song />} path="song/:songId" />
+        <Route path="search/" element={<SearchResultPage />} />
+        <Route path="artist/" element={<ArtistDetailsPage />} />
       </Routes>
     </div>
   </BrowserRouter>

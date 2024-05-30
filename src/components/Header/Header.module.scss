@@ -1,4 +1,4 @@
-@import "../rem-calc";
+@import "../../rem-calc";
 
 .dropdown {
   position: relative;
@@ -34,6 +34,38 @@
   }
 }
 
+.header-search-submit {
+  padding: 0.25rem 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  margin-left: 5px;
+  margin-right: 5px;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.header-search-submit:hover {
+  border: 1px solid #495057;
+}
+
+
+.form-container {
+  display: flex
+}
+
+.advanced-search {
+  align-self: center;
+}
+
+.form {
+  display: flex;
+}
 
 .App-header {
   background-color: gray;

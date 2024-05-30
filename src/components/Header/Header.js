@@ -4,11 +4,12 @@ import axios from "axios";
 import SearchSongName from "../SearchSongName/SearchSongName";
 
 function Header() {
-  const [, setTextInput] = useState("");
+  const [, setNameField] = useState("");
   const [songNames, setSongNames] = useState([]);
+
   const onInput = async event => {
     const value = event.target.value;
-    setTextInput(value);
+    setNameField(value);
     if (value.length === 0) {
       setSongNames([]);
       return;
@@ -35,16 +36,21 @@ function Header() {
   return (
     <header className={styles["App-header"]}>
       <nav className={styles['navbar']}>
-        <form className={styles.form}>
+        <form className={styles["form"]} method="GET" action="/search">
           <div className={styles["dropdown"]}>
             <input
               type="text"
-              placeholder={`search songs`}
+              name="name"
+              placeholder={`search songs by title`}
               className={styles["search-box"]}
               onInput={onInput}
             />
             {getSongNames()}
           </div>
+          <button type="submit" className={styles["header-search-submit"]} >
+            Search
+          </button>
+          <a href="/search" className={styles["advanced-search"]}>Advanced Search</a>
         </form>
       </nav>
     </header>
