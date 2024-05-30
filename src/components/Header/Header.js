@@ -8,6 +8,7 @@ function Header() {
   const [songName, setNameField] = useState("");
   const [songNames, setSongNames] = useState([]);
   const navigate = useNavigate();
+
   const onInput = async event => {
     const value = event.target.value;
     setNameField(value);
@@ -37,14 +38,14 @@ function Header() {
   const onClickSearch = () => {
     var url = '/search?'
     if (songName) {
-        url = url.concat(`name=${songName}`)
+      url = url.concat(`name=${songName}`)
     }
 
     if (artist) {
-        if (songName) {
-            url = url.concat('&')
-        }
-        url = url.concat(`artist=${artist}`)
+      if (songName) {
+        url = url.concat('&')
+      }
+      url = url.concat(`artist=${artist}`)
     }
 
     navigate(url)
@@ -53,22 +54,21 @@ function Header() {
   return (
     <header className={styles["App-header"]}>
       <nav className={styles['navbar']}>
-        <form className={styles["form"]}>
-              <div className={styles["dropdown"]}>
-                <input
-                  type="search"
-                  placeholder={`search songs`}
-                  className={styles["search-box"]}
-                  onInput={onInput}
-                />
-                {getSongNames()}
-              </div>
-              <button 
-              type="submit" 
-              className={styles["header-search-submit"]}
-              onClick={onClickSearch}
-              >Search</button>
-              <a href="/search">Advanced Search</a>
+        <form className={styles["form"]} method="GET" action="/search">
+          <div className={styles["dropdown"]}>
+            <input
+              type="text"
+              name="name"
+              placeholder={`search songs by title`}
+              className={styles["search-box"]}
+              onInput={onInput}
+            />
+            {getSongNames()}
+          </div>
+          <button type="submit" className={styles["header-search-submit"]} onClick={onClickSearch}>
+            Search
+          </button>
+          <a href="/search">Advanced Search</a>
         </form>
       </nav>
     </header>
