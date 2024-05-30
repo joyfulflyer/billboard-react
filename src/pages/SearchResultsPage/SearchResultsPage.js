@@ -89,7 +89,7 @@ function SearchResultPage() {
                 </div>
                 <div>
                     <form action="/search" method="get">
-                        <input type="search" id="artistSearchField" name="artist" placeholder="search artists" onChange={e => setArtistQuery(e.target.value)} defaultValue={artistQuery || ''} />
+                        <input type="search" id="artistSearchField" name="artist" placeholder="search songs by artist" onChange={e => setArtistQuery(e.target.value)} defaultValue={artistQuery || ''} />
                         <button type="submit">Search</button>
                     </form>
                 </div>
@@ -102,6 +102,7 @@ function SearchResultPage() {
             </div>
         )
     }
+    // I will need a separate artist search to search the artists themselves
 
     return (
         <div>{searchForm()}{showSongNames()}</div>

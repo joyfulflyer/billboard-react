@@ -1,0 +1,30 @@
+.artist-details-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.artist-details-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.artist-details {
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+.artist-details__image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.artist-details__name {
+    font-size: 16px;
+    line-height: 1.5;
+}
