@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import styles from "./Header.module.scss";
 import axios from "axios";
 import SearchSongName from "../SearchSongName/SearchSongName";
-import { useNavigate } from "react-router-dom";
 
 function Header() {
-  const [songName, setNameField] = useState("");
+  const [, setNameField] = useState("");
   const [songNames, setSongNames] = useState([]);
-  const navigate = useNavigate();
 
   const onInput = async event => {
     const value = event.target.value;
@@ -35,22 +33,6 @@ function Header() {
     }
   };
 
-  const onClickSearch = () => {
-    var url = '/search?'
-    if (songName) {
-      url = url.concat(`name=${songName}`)
-    }
-
-    if (artist) {
-      if (songName) {
-        url = url.concat('&')
-      }
-      url = url.concat(`artist=${artist}`)
-    }
-
-    navigate(url)
-  }
-
   return (
     <header className={styles["App-header"]}>
       <nav className={styles['navbar']}>
@@ -65,7 +47,7 @@ function Header() {
             />
             {getSongNames()}
           </div>
-          <button type="submit" className={styles["header-search-submit"]} onClick={onClickSearch}>
+          <button type="submit" className={styles["header-search-submit"]} >
             Search
           </button>
           <a href="/search">Advanced Search</a>
